@@ -10,6 +10,7 @@ private:
     int id;
     static int nbinst;
     int degradation;
+    std::vector<T>* values;
 public:
     Core();
     virtual ~Core();
