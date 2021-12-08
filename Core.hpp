@@ -5,7 +5,7 @@
 #include <vector>
 #include <iostream>
 
-template<class T> class Core{
+template<typename T> class Core{
 private:
     int id;
     static int nbinst;
@@ -13,7 +13,8 @@ private:
 public:
     Core();
     virtual ~Core();
-    static int getCount();    
+    static int getCount(); 
+    static void incrnb();   
 
 
 };
