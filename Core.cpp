@@ -1,4 +1,5 @@
 #include"Core.hpp"
+#include<iostream>
 template<typename T>
 int Core<T>::nbinst=0;
 //la méthode qui incrémente le nb d'instanciations
@@ -15,4 +16,13 @@ Core<T>::Core(){
 template<typename T>
 int Core<T>::getCount(){
     return Core<T>::nbinst;
+}
+//la surchage de l'operateur d'affichage
+template<typename T>
+std::ostream& operator<< (std::ostream& os, const Core<T>& core)
+{
+    os<<"----Core----"<<'\n';
+    os<<"id "<<core.id<<","<<"degradation "<<core.degradation<<'\n';
+
+    return os;
 }
