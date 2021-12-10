@@ -7,7 +7,9 @@
 template<typename T>
 class MapReduce{
 private:
-    static std::vector<Core<T>*> cores;    
+    static std::vector<Core<T>*> cores;
+    std::vector<T>* values;
+    Core<T>* core;    
 
 };
 
