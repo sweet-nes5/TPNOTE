@@ -12,13 +12,15 @@ private:
     int degradation;
     std::vector<T>* values;
 public:
-    Core();
+    
     virtual ~Core();
     static int getCount(); 
     static void incrnb(); 
     Core<T> map(T(*func(T x))); 
-   // friend std::ostream& operator<<(std::ostream& os, const Core<T>& core);
-
+    //friend std::ostream& operator<<(std::ostream& os, const Core<T>& core);
+    template<typename U> friend class MapReduce;
+protected:    
+    Core();
 
 };
 //definition des methodes 
