@@ -56,25 +56,25 @@ int main(int argc, char **argv)
     std::vector<int> b = std::vector<int>( { 12, 3, 100 ,60, -7, -8, -9, -10 } );
 
     MapReduce<int> mri(&b);
-
+    
      //0- Affichage du nombre de coeurs initiaux
     std::cout<<std::endl<< "####### test 0 #######"<<std::endl;
     std::cout<< std::endl<<"Nombre de coeurs initiaux: " << Core<int>::getCount()<<std::endl;
 
-/*
+
     //1- Décommentez pour tester si on peut instancier un nouveau coeur (ne doit pas fonctionnererrr)
     //Core<int> core1;
 
 
-    //2 - Test d'affichage des coeurs disponibles (id s'incrémente et degradation 0)
+   //2 - Test d'affichage des coeurs disponibles (id s'incrémente et degradation 0)
     std::cout<<std::endl<< "####### test 2 #######"<<std::endl<<std::endl;
     MapReduce<int>::afficherCores(); 
 
-    //3- Choix et affichage d'un coeur avec l'operateur <<
+     //3- Choix et affichage d'un coeur avec l'operateur <<
     std::cout<<std::endl<< "####### test 3 #######"<<std::endl<<std::endl;
     std::cout<< mri.chooseCore()<< std::endl;
 
-    //4- Tester ma possibilité de faire core.map(...).map(...)
+    /*//4- Tester ma possibilité de faire core.map(...).map(...)
     Core<int> core = mri.map(positive)->getCore()->map(gt50);
     std::cout<<std::endl<< "####### test 4 #######"<<std::endl<<&core << std::endl;
 
