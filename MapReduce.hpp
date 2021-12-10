@@ -7,12 +7,13 @@
 template<typename T>
 class MapReduce{
 private:
-    static std::vector<Core<T>*> cores;
+    
     std::vector<T>* values;
     Core<T>* core; 
     
 public:
-    MapReduce(std::vector<T> b);  
+    static std::vector<Core<T>*> cores;
+    MapReduce(std::vector<T>* b);  
     Core<T>* chooseCore();     
 
 };

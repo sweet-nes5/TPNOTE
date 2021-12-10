@@ -53,9 +53,9 @@ int main(int argc, char **argv)
 {
 
 
-    //std::vector<int> b = std::vector<int>( { 12, 3, 100 ,60, -7, -8, -9, -10 } );
+    std::vector<int> b = std::vector<int>( { 12, 3, 100 ,60, -7, -8, -9, -10 } );
 
-    //MapReduce<int> mri(&b);
+    MapReduce<int> mri(&b);
 
      //0- Affichage du nombre de coeurs initiaux
     std::cout<<std::endl<< "####### test 0 #######"<<std::endl;
