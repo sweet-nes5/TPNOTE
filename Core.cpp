@@ -15,7 +15,7 @@ Core<T>::Core(){
 //la méthode qui retourne le nombre d'instanciations
 template<typename T>
 int Core<T>::getCount(){
-    return Core<T>::nbinst;
+   return Core<T>::nbinst;
 }
 //la surchage de l'operateur d'affichage
 template<typename T>

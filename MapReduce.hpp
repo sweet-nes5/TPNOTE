@@ -9,7 +9,11 @@ class MapReduce{
 private:
     static std::vector<Core<T>*> cores;
     std::vector<T>* values;
-    Core<T>* core;    
+    Core<T>* core; 
+    
+public:
+    MapReduce(std::vector<T> b);  
+    Core<T>* chooseCore();     
 
 };
 

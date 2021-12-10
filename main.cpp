@@ -51,17 +51,17 @@ bool example(std::string  &i)
 
 int main(int argc, char **argv)
 {
-/*
 
-    std::vector<int> b = std::vector<int>( { 12, 3, 100 ,60, -7, -8, -9, -10 } );
 
-    MapReduce<int> mri(&b);
+    //std::vector<int> b = std::vector<int>( { 12, 3, 100 ,60, -7, -8, -9, -10 } );
 
-    // 0- Affichage du nombre de coeurs initiaux
+    //MapReduce<int> mri(&b);
+
+     //0- Affichage du nombre de coeurs initiaux
     std::cout<<std::endl<< "####### test 0 #######"<<std::endl;
-    std::cout<< std::endl<<"Nombre de coeurs initiaux: "<<Core<int>::getCount()<<std::endl;
+    std::cout<< std::endl<<"Nombre de coeurs initiaux: " << Core<int>::getCount()<<std::endl;
 
-
+/*
     //1- Décommentez pour tester si on peut instancier un nouveau coeur (ne doit pas fonctionnererrr)
     //Core<int> core1;
 
