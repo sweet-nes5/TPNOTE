@@ -73,12 +73,12 @@ int main(int argc, char **argv)
      //3- Choix et affichage d'un coeur avec l'operateur <<
     std::cout<<std::endl<< "####### test 3 #######"<<std::endl<<std::endl;
     std::cout<< mri.chooseCore()<< std::endl;
-
-    /*//4- Tester ma possibilité de faire core.map(...).map(...)
-    Core<int> core = mri.map(positive)->getCore()->map(gt50);
+   
+      //4- Tester ma possibilité de faire core.map(...).map(...)
+    Core<int>&  core = mri.map(positive)->getCore()->map(gt50);
     std::cout<<std::endl<< "####### test 4 #######"<<std::endl<<&core << std::endl;
 
-    //5- Tester ma possibilité de faire mri.map(...)->map(...) puis reduce
+  /*//5- Tester ma possibilité de faire mri.map(...)->map(...) puis reduce
     std::cout<<std::endl<< "####### test 5 #######"<<std::endl;
     std::cout<<std::endl<< "Resultat mapReduce : " <<mri.map(positive)->map(gt50)->chooseCore()->reduce(sum, 0) << std::endl<< std::endl;
     
