@@ -14,13 +14,15 @@ friend MapReduce<T>;
 private:
     int id;
     int degradation=0;
-    std::vector<T>* values;
+    
     static int nbinst;
 public:
+    std::vector<T>* values;
     //virtual ~Core();
     static int getCount();
     static void incrnb(); 
     template<typename U> Core<T>& map(U (*func)); 
+    template<typename U> T reduce(U (*func),T z); 
     const int getID()const;
     void set(std::vector<T>* vec);
     const int getDEGRADATION()const ;//le premier const veut dire que le fonction renvoie un const et le 2eme c'est que l'objet dans la methode ne sera po modifié
@@ -37,8 +39,16 @@ template<typename T>
 std::ostream& operator<< (std::ostream& os, const Core<T>* core)
 {
     os<<"----Core----"<<std::endl;
-    os<<"id "<<core->getID()<<",  "<<"degradation "<<core->getDEGRADATION()<<std::endl;
-   // if(values!=nullptr)
+    os<<"id "<<core->getID()<<",  "<<"degradation "<<core->getDEGRADATION()<<std::endl<<std::endl;
+
+   if(!core->values->empty()){//affiche si values n'est pas vide
+      std::cout<<"values : [ ";
+      for(unsigned int i=0;i<core->values->size();i++){
+         
+          std::cout<<core->values->at(i)<<" ";
+
+      } std::cout<<"]"<<std::endl;
+   }
 
     return os;
 }
@@ -58,7 +68,7 @@ void Core<T>::incrnb(){
 }
 //le constructeur
 template<typename T>
-Core<T>::Core(){
+Core<T>::Core():values{nullptr}{
     
     id=Core<T>::nbinst;
     Core<T>::nbinst++;
@@ -85,21 +95,28 @@ template<typename U>
 Core<T>& Core<T>::map(U (*func)){
 
     this->degradation++;
-    
-    int size=values->size();
 
-    for(int i=0;i<size;i++){
-    
+    for(unsigned int i=0;i<values->size();i++){
+        
         if (!func(values->at(i))){
-            values->erase(values->begin()+i);
-            size--;
+            values->erase(values->begin()+i); 
+            i--;       
+           
         }
     }
-     /*for(int i=0;i<size;i++){
-        std::cout<<"values : ["<<this->values->at(i)<<"\t";
-        std::cout<<" ]"<<std::endl;
-        }*/
-        
  return *this;   
+}
+//methode reduce
+template<typename T>
+template<typename U>
+T Core<T>::reduce(U (*func),T z){
+    this->degradation++;
+    int result =0;
+    result=func(values->at(0),values->at(1));
+    for (unsigned int i=2;i<values->size();i++){
+        result=func(values->at(i),result);
+    }
+    z=z+result;
+    return z;
 }
 #endif

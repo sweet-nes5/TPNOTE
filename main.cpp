@@ -78,7 +78,7 @@ int main(int argc, char **argv)
     Core<int>&  core = mri.map(positive)->getCore()->map(gt50);
     std::cout<<std::endl<< "####### test 4 #######"<<std::endl<<&core << std::endl;
 
-  /*//5- Tester ma possibilité de faire mri.map(...)->map(...) puis reduce
+  //5- Tester ma possibilité de faire mri.map(...)->map(...) puis reduce
     std::cout<<std::endl<< "####### test 5 #######"<<std::endl;
     std::cout<<std::endl<< "Resultat mapReduce : " <<mri.map(positive)->map(gt50)->chooseCore()->reduce(sum, 0) << std::endl<< std::endl;
     
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 
         MapReduce<std::string>::afficherCores();
 
-    //10 - Compter les mots contenant la lettre "p" (voir ligne 28 pour la fonction reduce et 34 pour map)  
+    /*//10 - Compter les mots contenant la lettre "p" (voir ligne 28 pour la fonction reduce et 34 pour map)  
         std::cout<<std::endl<< "####### tests  9 #######"<<std::endl;
     std::cout<< std::endl<<"Resultat mapReduce : " << mrs.map(countains)->chooseCore()->reduce(count, 0) << std::endl;
 

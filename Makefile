@@ -15,6 +15,6 @@ MapReduce.o : MapReduce.cpp MapReduce.hpp
 Core.o : Core.cpp Core.hpp
 	$(CPP) $(CFLAGS) -c $<
 clean :
-	rm *.o
+	rm *.o 
 test:
 	./mr

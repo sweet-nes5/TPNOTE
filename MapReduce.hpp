@@ -43,7 +43,9 @@ Core<T>* MapReduce<T>::chooseCore(){
     } 
 
     core=MapReduce<T>::cores[pos];
-    core->set(values);
+    
+   core->set(values);
+    
     return core;
 }
 
