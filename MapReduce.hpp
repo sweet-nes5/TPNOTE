@@ -14,7 +14,8 @@ private:
     
 public:
     static std::vector<Core<T>*> cores;
-    MapReduce(std::vector<T> *b);  
+    MapReduce(std::vector<T> *b); 
+    virtual ~MapReduce() ;
     Core<T>* chooseCore();
     Core<T>* getCore();
     static void afficherCores(); 
@@ -28,6 +29,12 @@ std::vector<Core<T>*> MapReduce<T>::cores={new Core<T>,new Core<T>,new Core<T>,n
 //le constructeur
 template<typename T>
 MapReduce<T>::MapReduce(std::vector<T> *b):values{b},core{nullptr}{}
+//le destructeur
+template<typename T>
+MapReduce<T>::~MapReduce(){
+    values->clear();
+    cores.clear();
+}
 //la méthode pour choisir le coeur
 template<typename T>
 Core<T>* MapReduce<T>::chooseCore(){

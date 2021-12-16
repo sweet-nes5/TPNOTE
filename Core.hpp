@@ -4,7 +4,9 @@
 
 #include <vector>
 #include <iostream>
-//#include<functional>
+#include <type_traits>
+#include<string>
+
 template<typename T> class MapReduce;
 
 template<typename T> class Core{
@@ -18,7 +20,7 @@ private:
     static int nbinst;
 public:
     std::vector<T>* values;
-    //virtual ~Core();
+    virtual ~Core();//aussi concernant le destructeur,est il obligatoire de mettre virtual?
     static int getCount();
     static void incrnb(); 
     template<typename U> Core<T>& map(U (*func)); 
@@ -32,8 +34,6 @@ protected:
     Core();
 };
 //definition des methodes de la classe
- 
-
 //la surchage de l'operateur d'affichage
 template<typename T>
 std::ostream& operator<< (std::ostream& os, const Core<T>* core)
@@ -74,6 +74,11 @@ Core<T>::Core():values{nullptr}{
     Core<T>::nbinst++;
     
 }
+//le destructeur 
+template<typename T>
+Core<T>::~Core(){
+    values->clear();
+}
 //la méthode qui retourne le nombre d'instanciations
 template<typename T>
 int Core<T>::getCount(){
@@ -92,18 +97,18 @@ const int Core<T>::getDEGRADATION()const {
 //méthode map
 template<typename T>
 template<typename U>
-Core<T>& Core<T>::map(U (*func)){
-
+Core<T>& Core<T>::map(U (*func))
+{
     this->degradation++;
 
     for(unsigned int i=0;i<values->size();i++){
-        
-        if (!func(values->at(i))){
-            values->erase(values->begin()+i); 
-            i--;       
-           
-        }
-    }
+            if (!func(values->at(i))){
+                    values->erase(values->begin()+i); 
+                     i--;    
+                     }
+             }
+    
+
  return *this;   
 }
 //methode reduce
@@ -112,11 +117,18 @@ template<typename U>
 T Core<T>::reduce(U (*func),T z){
     this->degradation++;
     int result =0;
-    result=func(values->at(0),values->at(1));
-    for (unsigned int i=2;i<values->size();i++){
-        result=func(values->at(i),result);
-    }
-    z=z+result;
-    return z;
+    //int count =0;
+
+   // if(std::is_same<T, int>::value){ //j'ai voulue verifier pour les differents type(int,string) mais ça m'a créé des bug,dommage:(
+       result=func(values->at(0),values->at(1));
+        for (unsigned int i=2;i<values->size();i++){
+            result=func(values->at(i),result);
+            //result=func(count,values->at(i));
+        }
+        z=z+result;
+        return z;
+  /*} else {
+       */
+    //return z;
 }
 #endif

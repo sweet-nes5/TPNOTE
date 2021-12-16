@@ -112,15 +112,15 @@ int main(int argc, char **argv)
 
         MapReduce<std::string>::afficherCores();
 
-    /*//10 - Compter les mots contenant la lettre "p" (voir ligne 28 pour la fonction reduce et 34 pour map)  
+   /*//10 - Compter les mots contenant la lettre "p" (voir ligne 28 pour la fonction reduce et 34 pour map)  
         std::cout<<std::endl<< "####### tests  9 #######"<<std::endl;
     std::cout<< std::endl<<"Resultat mapReduce : " << mrs.map(countains)->chooseCore()->reduce(count, 0) << std::endl;
-
-    MapReduce<std::string>::afficherCores(); 
+ 
+     MapReduce<std::string>::afficherCores(); 
 
     std::cout<< std::endl<<"Nombre de coeurs instanciés:  "<<Core<std::string>::getCount()<<std::endl;
     
-    */
+   */
 
     return 0;
 }
